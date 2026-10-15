@@ -29,8 +29,19 @@
         <p class="lead">Now I help Texas families protect the people they love.</p>
         <a class="btn btn-large" href="#quote">Get my free quote</a>
       </div>
-      <img class="hero-photo" src="assets/stacey.webp" width="720" height="576"
-           alt="Stacey Miller smiling outdoors, wearing sunglasses and a navy Farmers Insurance T-shirt.">
+      <figure class="hero-media">
+        <video id="hero-video" class="hero-video" muted loop playsinline preload="metadata"
+               poster="assets/stacey-intro-poster.jpg" width="720" height="1280"
+               aria-label="Stacey Miller introduces herself in a short video">
+          <source src="assets/stacey-intro.mp4" type="video/mp4">
+          <track kind="captions" src="assets/stacey-intro.vtt" srclang="en" label="English" default>
+        </video>
+        <div class="video-controls">
+          <button type="button" class="vbtn" id="vid-play" aria-pressed="false">Play video</button>
+          <button type="button" class="vbtn" id="vid-sound" aria-pressed="false">Unmute</button>
+        </div>
+        <figcaption class="sr-only">Video transcript: Hi, I'm Stacey Miller. I help Texas families protect the people they love. I'd love to hear your story and help you protect the people in it.</figcaption>
+      </figure>
     </div>
   </section>
 
@@ -84,5 +95,19 @@
     <p class="small">&copy; 2026 Stacey Miller. StaceyMillerInsurance.com</p>
   </div>
 </footer>
+<script>
+(function(){
+  var v=document.getElementById('hero-video'),pb=document.getElementById('vid-play'),sb=document.getElementById('vid-sound');
+  if(!v)return;
+  function sync(){var playing=!v.paused;pb.textContent=playing?'Pause video':'Play video';pb.setAttribute('aria-pressed',String(playing));
+    sb.textContent=v.muted?'Unmute':'Mute';sb.setAttribute('aria-pressed',String(!v.muted));}
+  pb.addEventListener('click',function(){if(v.paused){v.play();}else{v.pause();}});
+  sb.addEventListener('click',function(){v.muted=!v.muted;if(!v.muted&&v.paused)v.play();sync();});
+  v.addEventListener('play',sync);v.addEventListener('pause',sync);v.addEventListener('volumechange',sync);
+  var rm=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(!rm){var p=v.play();if(p&&p.catch)p.catch(function(){});}
+  sync();
+})();
+</script>
 </body>
 </html>
