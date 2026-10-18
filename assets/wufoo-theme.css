@@ -7,7 +7,7 @@
 }
 #saveForm:hover, input.btTxt.submit:hover { background: #ffe14d !important; }
 .wufoo input.text, .wufoo textarea.textarea, .wufoo select.select {
-  border: 1px solid #444 !important; border-radius: 6px !important; padding: 6px !important;
+  border: 1px solid #444 !important; border-radius: 6px !important; padding: 6px !important; box-sizing: border-box !important;
 }
 .wufoo input.text:focus, .wufoo textarea.textarea:focus, .wufoo select.select:focus {
   border-color: #FFD60A !important; outline: none !important;
@@ -16,4 +16,4 @@
 .wufoo .section h3, .wufoo .section div { color: #FFFFFF !important; }
 .wufoo .info { border-bottom-color: #333 !important; }
 .wufoo a { color: #FFD60A !important; }
-#header, header#header { display: none !important; }
+#logo { display: none !important; }
